@@ -6,7 +6,7 @@ while [ $i -le 100 ]; do
 		echo "Fizz"
 	elif [ $((i % 5)) -eq 0 ]; then 
 		echo "Buzz"
-	elif [ $((i % 3)) = 0 ] && [ $((i % 5)) -eq 0 ]; then
+	elif [ $((i % 3)) -eq 0 ] && [ $((i % 5)) -eq 0 ]; then
 		echo "FizzBuzz"
 	else
 		echo "$i"

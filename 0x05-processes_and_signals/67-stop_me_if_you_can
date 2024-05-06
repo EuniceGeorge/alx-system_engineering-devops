@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+# Bash script that displays a textand terminates at kill
+pgrep -f 7-highlander | xargs kill

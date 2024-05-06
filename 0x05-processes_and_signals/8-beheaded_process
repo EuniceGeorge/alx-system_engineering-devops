@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+# A bash script that terminates a script
+pgrep -f 7-highlander | xargs kill -9

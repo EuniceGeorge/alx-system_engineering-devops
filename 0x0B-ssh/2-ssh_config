@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
 # connect to a server without typing a password
 
-ssh-copy-id ubuntu@54.196.31.203
+IdentityFile ~/.ssh/school
+PasswordAuthentication no

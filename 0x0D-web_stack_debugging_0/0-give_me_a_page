@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+# A script to debug aa server
+sudo service apaches2 start

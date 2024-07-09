@@ -20,7 +20,7 @@ sed -i 's/server_name _;/server_name _;\n\trewrite ^\/redirect_me https:\/\/www.
 echo "Ceci n'est pas une page" | sudo tee /var/www/html/404.html
 
 # configure the page to return 404-error 
-sed -i 's/server_name _;/server_name _;\n\terror_page 404 \/404.html;' /etc/nginx/sites-enabled/default
+sed -i 's/server_name _;/server_name _;\n\terror_page 404 \/404.html;/' /etc/nginx/sites-enabled/default
 
 sudo service nginx restart
 

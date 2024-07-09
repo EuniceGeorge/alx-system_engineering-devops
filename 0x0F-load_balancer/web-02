@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+# A script to generate a server
+
+#seeting up the ssh agent
+eval $("ssh-agent")
+
+# The path to the identity_file
+ssh-add ~/.ssh/school
+
+#server of the user
+ssh ubuntu@18.204.13.20

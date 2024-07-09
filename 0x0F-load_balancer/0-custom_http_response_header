@@ -1,0 +1,27 @@
+#!/usr/bin/env bash
+#Configure Nginx so that its HTTP response contains a custom header 
+
+#update packages
+sudo uapt-get update
+sudo apt-get install -y nginx
+
+#sudo ufw allow 'Nginx HTTP'
+#sudo ufw allow ssh
+echo "Hello World!" | sudo tee /var/www/html/index.html
+sudo service nginx restart
+
+# Redirect /redirect_me to https://www.youtube.com/watch?v=QH2-TGUlwu4
+sudo sed -i 's/server_name _;/server_name _;\n\trewrite ^\/redirect_me https:\/\/www.youtube.com\/watch?v=QH2-TGUlwu4 permanent;/' /etc/nginx/sites-enabled/default
+
+# A custom page that contains Ceci n'est pas une page.
+echo "Ceci n'est pas une page" | sudo tee /var/www/html/404.html
+
+# include custom header
+sudo sed -i "/server_name _/a add_header X-Served-By $HOSTNAME;" /etc/nginx/sites-enabled/default
+
+# configure the page to return 404-error 
+#sudo sed -i 's/server_name _;/server_name _;\n\terror_page 404 \/404.html;/' /etc/nginx/sites-enabled/default
+
+#restart the config
+sudo restart nginx restart
+

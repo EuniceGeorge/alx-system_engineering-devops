@@ -23,5 +23,5 @@ sudo sed -i "/server_name _/a add_header X-Served-By $HOSTNAME;" /etc/nginx/site
 #sudo sed -i 's/server_name _;/server_name _;\n\terror_page 404 \/404.html;/' /etc/nginx/sites-enabled/default
 
 #restart the config
-sudo restart nginx restart
+sudo service nginx restart
 

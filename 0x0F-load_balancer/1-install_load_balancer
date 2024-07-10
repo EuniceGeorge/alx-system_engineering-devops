@@ -1,11 +1,11 @@
 #!/usr/bin/env bash
 # install and configure load balancer
 
-sudo apt -y update
-sudo apt -y install haproxy
+sudo apt-get -y update
+sudo apt-get -y install haproxy
 
 # configure haproxy for traffic distribution 
-echo "
+echo '
 frontend haproxy_balancer
     bind *:80
     mode http
@@ -15,7 +15,7 @@ backend http_back
     balance roundrobin
     server web-01 192.168.1.101:80 check
     server web-02 192.168.1.102:80 check    
-" >> /etc/haproxy/haproxy.cfg
+' >> /etc/haproxy/haproxy.cfg
 
 #Restart HAproxy service
 sudo service haproxy restart

@@ -2,4 +2,4 @@
 # script of task 0 but using less lines
 ln -sf /etc/nginx/sites-available/default /etc/nginx/sites-enabled/default
 service nginx restart
-pkill -1 nginx
+kill "$(pgrep 'nginx' | head -1)"

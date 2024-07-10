@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 # A script to generate a server
 
-#seeting up the ssh agent
+#seting up the ssh agent
 eval $("ssh-agent")
 
 # The path to the identity_file

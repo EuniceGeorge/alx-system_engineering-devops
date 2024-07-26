@@ -1,0 +1,25 @@
+-- Create holberton_user and grant privileges
+CREATE USER IF NOT EXISTS 'holberton_user'@'localhost' IDENTIFIED BY 'projectcorrection280hbtn';
+GRANT REPLICATION CLIENT ON *.* TO 'holberton_user'@'localhost';
+
+-- Create tyrell_corp database and nexus6 table
+CREATE DATABASE IF NOT EXISTS tyrell_corp;
+USE tyrell_corp;
+CREATE TABLE IF NOT EXISTS nexus6 (id INTEGER, name TEXT);
+INSERT INTO nexus6 VALUES (1, 'Leon') ON DUPLICATE KEY UPDATE name='Leon';
+
+-- Grant privileges to holberton_user
+GRANT SELECT ON tyrell_corp.nexus6 TO 'holberton_user'@'localhost';
+
+-- Create replica_user and grant replication privileges
+DROP USER IF EXISTS 'replica_user'@'%';
+CREATE USER 'replica_user'@'%' IDENTIFIED BY 'replica_user';
+GRANT REPLICATION SLAVE ON *.* TO 'replica_user'@'%';
+GRANT SELECT ON mysql.user TO 'holberton_user'@'localhost';
+
+-- Create web02 user and grant replication privileges
+CREATE USER IF NOT EXISTS 'web02'@'18.204.13.20' IDENTIFIED BY 'web02';
+GRANT REPLICATION SLAVE ON *.* TO 'web02'@'18.204.13.20';
+
+
+-- source /home/ubuntu/setup_sql

@@ -1,7 +1,6 @@
 #!/usr/bin/python3
 """A python script that prints iformation using API
 """
-import json
 import requests
 import sys
 
@@ -32,7 +31,7 @@ if __name__ == "__main__":
         if task.get("completed") is True:
             completed_task += 1
 
-    print("Employee {} is done with tasks ({}/{}):".format(
+    print("Employee {} is done with tasks({}/{}):".format(
         name, completed_task, len(todo_task)))
 
     for title in todo_task:

@@ -1,6 +1,5 @@
 #!/usr/bin/python3
-"""
-A python script that prints iformation using API
+"""A python script that prints iformation using API
 """
 import json
 import requests
@@ -11,7 +10,6 @@ if __name__ == "__main__":
     argv = sys.argv
     if len(argv) < 2:
         exit()
-
 
     url = 'https://jsonplaceholder.typicode.com/users/{}'.format(argv[1])
     response = requests.get(url)
@@ -34,7 +32,8 @@ if __name__ == "__main__":
         if task.get("completed") is True:
             completed_task += 1
 
-    print("Employee {} is done with tasks ({}/{}):".format(name, completed_task, len(todo_task)))
+    print("Employee {} is done with tasks ({}/{}):".format(
+        name, completed_task, len(todo_task)))
 
     for title in todo_task:
         if title.get("completed") is True:

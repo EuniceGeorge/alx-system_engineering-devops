@@ -5,8 +5,8 @@
 
 import requests
 
+
 def recurse(subreddit, hot_list=[], after=None):
-    
     """return the url"""
     url = 'https://www.reddit.com/r/{}/hot.json'.format(subreddit)
     headers = {'User-Agent': 'This agent?'}

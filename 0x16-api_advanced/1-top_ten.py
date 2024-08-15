@@ -1,27 +1,24 @@
 #!/usr/bin/python3
-""" Query RedditAPi to get
-    the first 10 titles
-"""
+# -*- coding: utf-8 -*-
+
+"""Module to print the top 10 hot posts of a subreddit"""
 
 import requests
 
 
 def top_ten(subreddit):
-
-    """return the url"""
+    """Function to print the top 10 hot posts of a subreddit"""
     url = 'https://www.reddit.com/r/{}/hot.json'.format(subreddit)
-    headers = {'User-Agent': 'This agent?'}
+    headers = {'User-Agent': 'This Agent?'}
     params = {'limit': 10}
-
-    response = requests.get(url, headers=headers, params=params)
-    data = response.json()
-    if response.status_code == 404:
-        pirint("None")
-    posts = data['data']['children']
-    for post in posts:
-        title = post['data']['title']
-        print(title)
+    response = requests.get(url, headers=headers, params=params,
+                            allow_redirects=False)
+    if response.status_code == 200:
+        for post in response.json().get('data').get('children'):
+            print(post.get('data').get('title'))
+    else:
+        print(None)
 
 
 if __name__ == '__main__':
-    top_ten(subreddit)
+    top_ten(input('Subreddit: '))
